@@ -117,10 +117,10 @@
                         <!-- end menu -->
 
                         <li class="nav-item">
-                            <a href="{{ url('/internalmemo') }}" class="nav-link">
+                            <a href="{{ url('/masterttd') }}" class="nav-link">
                                 <i class="nav-icon fas fa-copy"></i>
                                 <p>
-                                    Internal Memo
+                                    Master TTD
                                 </p>
                             </a>
                         </li>

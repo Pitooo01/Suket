@@ -1,14 +1,14 @@
 @extends('layout.dashboard')
 
-@section('title', 'Internal Memo')
+@section('title', 'Master TTD')
 
 @section('content')
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="_base_url" content="{{ url('/') }}">
     <div style="display: flex; justify-content: flex-end">
-        <button type="button" class="btn btn-primary my-3 mr-2" data-toggle="modal" data-target="#modalTambahManager">Tambah
+        <button type="button" class="btn btn-primary my-3" data-toggle="modal" data-target="#modalTambahManager">Tambah
             Data Manager</button>
-        <a href="{{ url('/pengalaman/create') }}" class="btn btn-primary my-3">Tambah Internal Memo</a>
+        {{-- <a href="{{ url('/pengalaman/create') }}" class="btn btn-primary my-3">Tambah Internal Memo</a> --}}
     </div>
     <div class="card">
         <div style="margin-left: 1.5%;margin-top:2%;">

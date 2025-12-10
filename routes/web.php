@@ -131,6 +131,6 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/kpr/kirimemailkemanager/{id}', 'KprController@kirimemailkemanager');
 	Route::get('/kpr/kirimulangkekaryawan/{id}', 'KprController@kirimulangkekaryawan');
 
-    Route::get('/internalmemo', 'ImController@index');
+    Route::get('/masterttd', 'ImController@index');
     Route::post('/manager/create', 'ImController@createManager')->name('manager.create');
 });
