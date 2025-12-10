@@ -11,7 +11,9 @@
     <link rel="icon" type="image/jpg" href="{{ url('/image/logo.jpg') }}">
 
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="{{ asset('lte/plugins/fontawesome-free/css/all.min.css') }}">
+    {{-- <link rel="stylesheet" href="{{ asset('lte/plugins/fontawesome-free/css/all.min.css') }}"> --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
     <link rel="stylesheet" href="{{ asset('/css/w3.css') }}">
     <!-- Ionicons
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">-->
@@ -28,6 +30,7 @@
     <link rel="stylesheet" href="{{ asset('lte/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css') }}">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+
     <!-- SweetAlert -->
     <link rel="stylesheet" href="{{ asset('/css/sweetalert.css') }}">
     <!-- SweetAlert -->
@@ -118,14 +121,14 @@
                         @include('layout.menu')
                         <!-- end menu -->
 
-                        <li class="nav-item">
+                        {{-- <li class="nav-item">
                             <a href="{{ url('/masterttd') }}" class="nav-link">
                                 <i class="nav-icon fas fa-copy"></i>
                                 <p>
                                     Master TTD
                                 </p>
                             </a>
-                        </li>
+                        </li> --}}
 
                         <li class="nav-item">
                             <a href="{{ url('/logout') }}" class="nav-link">
@@ -202,8 +205,7 @@
     <!-- ./wrapper -->
     @yield('footer')
 
-
-
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
         $(function() {
@@ -234,6 +236,7 @@
             "responsive": true,
         });
     </script>
+
 </body>
 
 </html>

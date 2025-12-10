@@ -6,64 +6,43 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="_base_url" content="{{ url('/') }}">
     <div style="display: flex; justify-content: flex-end">
-        <button type="button" class="btn btn-primary my-3" data-toggle="modal" data-target="#modalTambahManager">Tambah
-            Data Manager</button>
+        <button type="button" class="btn btn-primary my-3" data-toggle="modal" data-target="#modalTambahManager"><i
+                class="fa-solid fa-plus mr-2"></i>Tambah Data</button>
         {{-- <a href="{{ url('/pengalaman/create') }}" class="btn btn-primary my-3">Tambah Internal Memo</a> --}}
     </div>
-    <div class="card">
-        <div style="margin-left: 1.5%;margin-top:2%;">
-            <table>
+    {{-- <div class="card">
+        <div class="card-body"> --}}
+    <table id="tampil_pengalaman_kerja" class="table">
+
+        <thead>
+            <tr>
+                <th>Tanda Tangan</th>
+                <th>Nama Manager</th>
+                <th>Status</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($data as $row)
                 <tr>
-                    <td><input type="date" name="awal" id="awal"></td>
-                    <td> s/d </td>
-                    <td><input type="date" name="akhir" id="akhir"></td>
-                    <td style="width: 7px;"></td>
-                    <td><input type="text" name="nik" id="nik" placeholder="NIK"></td>
-                    <td style="width: 7px;"></td>
-                    <td><input type="text" name="nama" id="nama" placeholder="Nama"></td>
-                    <td style="width: 7px;"></td>
-                    <td><select id="status" name="status">
-                            <option value="">-- Pilih Status --</option>
-                            <option value="0">Belum Di Kirim Ke Manager</option>
-                            <option value="1">Sudah Di Kirim Ke Manager</option>
-                            <option value="2">Sudah Disetujui Manager</option>
-                            <option value="3">Dibatalkan</option>
-                        </select></td>
-                    <td><button class="btn btn-primary" onclick="Cari_karyawan()">Cari</button></td>
-
-                    <td><button class="btn btn-warning" onclick="Bersihkan()">Bersihkan</button></td>
+                    <td>
+                        <img src="{{ asset('storage/' . $row->ttd) }}" alt="TTD Manager" width="200">
+                    </td>
+                    <td>{{ $row->nama }}</td>
+                    <td>{{ $row->status }}</td>
+                    <td>{{ $row->email }}</td>
+                    <td class="justify-content-center">
+                        <button class="btn btn-warning btn-sm mr-1">Edit</button>
+                        <button class="btn btn-danger btn-sm">Hapus</button>
+                    </td>
                 </tr>
-            </table>
-        </div>
-        <div class="card-body">
-            <table id="tampil_pengalaman_kerja" class="table">
+            @endforeach
+        </tbody>
 
-                <thead>
-                    <tr>
-                        <th>Tanda Tangan</th>
-                        <th>Nama Manager</th>
-                        <th>Status</th>
-                        <th>Email</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($data as $row)
-                        <tr>
-                            <td>
-                                <img src="{{ asset('storage/' . $row->ttd) }}"
-                                    alt="TTD Manager"
-                                    width="200">
-                            </td>
-                            <td>{{ $row->nama }}</td>
-                            <td>{{ $row->status }}</td>
-                            <td>{{ $row->email }}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-
-            </table>
-        </div>
-    </div>
+    </table>
+    {{-- </div>
+    </div> --}}
 
     <!-- Modal Tambah Data Manager -->
     <div class="modal fade" id="modalTambahManager" tabindex="-1" role="dialog" aria-labelledby="modalTambahManagerLabel"
@@ -71,7 +50,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="modalTambahManagerLabel">Tambah Data Manager</h5>
+                    <h5 class="modal-title" id="modalTambahManagerLabel">Tambah Data Tanda Tangan</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -113,6 +92,39 @@
     <script src="{{ asset('/js/jquery-ui-1-12-1.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('/css/jquery-ui-1-12-1.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/tabel.css') }}">
+
+    <script>
+        $(document).ready(function() {
+            $('#formTambahManager').submit(function(e) {
+                e.preventDefault();
+                var form = this;
+                Swal.fire({
+                    title: 'Konfirmasi Penyimpanan',
+                    text: "Apakah Anda yakin ingin menyimpan data ini? Pastikan semua data sudah benar.",
+                    icon: 'question',
+                    showCancelButton: true,
+                    confirmButtonColor: '#28a745',
+                    cancelButtonColor: '#dc3545',
+                    confirmButtonText: 'Ya, Simpan!',
+                    cancelButtonText: 'Batal'
+                }).then((result) => {
+                    if (result.isConfirmed) {
+                        form.submit();
+                        Swal.fire({
+                            icon: 'success',
+                            title: 'Berhasil!',
+                            text: 'Data Berhasil Ditambahkan!',
+                            timer: 5000,
+                            showConfirmButton: false
+                        }).then(() => {
+
+                            window.location.reload();
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 
 
 @endsection

@@ -46,7 +46,12 @@
                 </a>
             </li>
 
-
+            <li class="nav-item">
+                <a href="{{ url('/masterttd') }}" class="nav-link">
+                    <i class="far fa-circle nav-icon"></i>
+                    <p>Tanda Tangan</p>
+                </a>
+            </li>
 
         </ul>
     </li>
@@ -99,7 +104,7 @@
         </ul>
 
     </li>
-    
+
 @endif
 
 @if (auth()->user()->role == 'user')

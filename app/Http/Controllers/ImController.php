@@ -11,7 +11,7 @@ class ImController extends Controller
     public function index()
     {
         $data = Manager::all();
-        return view('internalmemo.index', compact('data'));
+        return view('tandatangan.index', compact('data'));
     }
 
     public function createManager(Request $request)
@@ -41,7 +41,7 @@ class ImController extends Controller
             'ttd' => $ttdPath
         ]);
 
-        return back()->with('success', 'Data manager berhasil ditambahkan.');
+        return back()->with('success', 'Data tanda tangan berhasil ditambahkan.');
     }
 
 }
