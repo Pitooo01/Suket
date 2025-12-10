@@ -8,6 +8,8 @@
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
+    <link rel="icon" type="image/jpg" href="{{ url('/image/logo.jpg') }}">
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{ asset('lte/plugins/fontawesome-free/css/all.min.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/w3.css') }}">
